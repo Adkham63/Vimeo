@@ -6,6 +6,12 @@ export default {
       colors: {
         primary: "#F5385D",
       },
+      backgroundImage: {
+        "gradient-to-r": "linear-gradient(to right, var(--tw-gradient-stops))",
+      },
+      animation: {
+        spin: "spin 1s linear infinite",
+      },
     },
   },
   plugins: [],
