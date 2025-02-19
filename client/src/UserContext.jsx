@@ -1,22 +1,20 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 
-export const UserContext = createContext({});
+// Создаем и экспортируем контекст
+export const UserContext = createContext();
 
+// Провайдер контекста
 export function UserContextProvider({ children }) {
   const [user, setUser] = useState(null);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
     if (!user) {
-      axios.get("/api/profile")
-        .then(({ data }) => {
-          setUser(data);
-          setReady(true);
-        })
-        .catch((err) => {
-          console.error("Failed to fetch profile:", err);
-        });
+      axios.get("/api/profile").then(({ data }) => {
+        setUser(data);
+        setReady(true);
+      });
     }
   }, []);
 
@@ -25,4 +23,9 @@ export function UserContextProvider({ children }) {
       {children}
     </UserContext.Provider>
   );
+}
+
+// Кастомный хук
+export function useUser() {
+  return useContext(UserContext);
 }

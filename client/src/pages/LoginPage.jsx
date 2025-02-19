@@ -9,6 +9,7 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const { setUser } = useContext(UserContext);
 
   async function handleLoginSubmit(ev) {
@@ -16,10 +17,10 @@ const LoginPage = () => {
     try {
       const { data } = await axios.post("/api/login", { email, password });
       setUser(data);
-      toast.success("Login successful"); // Show success notification
-      setTimeout(() => setRedirect(true), 1000); // Delay redirection by 1 second
+      toast.success("🎉 Login successful! Redirecting...");
+      setTimeout(() => setRedirect(true), 1500);
     } catch (e) {
-      toast.error("Login failed"); // Show error notification
+      toast.error("⚠️ Login failed. Please check your credentials");
     }
   }
 
@@ -28,44 +29,94 @@ const LoginPage = () => {
   }
 
   return (
-    <div className="h-screen flex items-center justify-center bg-gradient-to-r from-green-200 to-blue-300">
-      <div className="mb-16 w-full max-w-md bg-white p-8 shadow-lg rounded-lg">
-        <h1 className="text-4xl text-center mb-6 font-bold text-gray-800">
-          Login
-        </h1>
-        <form className="space-y-4" onSubmit={handleLoginSubmit}>
-          <input
-            type="email"
-            placeholder="Your email"
-            value={email}
-            onChange={(ev) => setEmail(ev.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(ev) => setPassword(ev.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200"
-          />
-          <button
-            type="submit"
-            className="w-full py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors duration-200"
-          >
-            Login
-          </button>
-          <div className="text-center py-2 text-gray-600">
-            Don't have an account yet?{" "}
-            <Link
-              className="underline text-green-600 hover:text-green-800"
-              to={"/register"}
-            >
-              Register now
-            </Link>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#8ECAE6] to-[#219EBC] relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute w-72 h-72 bg-[#8ECAE6]/30 rounded-full -top-28 -right-28 animate-pulse"></div>
+      <div className="absolute w-64 h-64 bg-[#219EBC]/30 rounded-full -bottom-24 -left-24 animate-pulse"></div>
+
+      <div className="relative z-10 w-full max-w-md mx-4">
+        <div className="bg-white/95 backdrop-blur-sm p-6 md:p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
+          <div className="text-center mb-6">
+            <h1 className="text-3xl md:text-4xl font-bold text-[#023047] mb-2">
+              Welcome Back
+            </h1>
+            <p className="text-[#023047]/80 text-sm md:text-base">
+              Sign in to continue your journey
+            </p>
           </div>
-        </form>
+
+          <form className="space-y-4" onSubmit={handleLoginSubmit}>
+            <div>
+              <label className="block text-[#023047] text-sm font-medium mb-2">
+                Email
+              </label>
+              <div className="relative">
+                <input
+                  type="email"
+                  placeholder="name@example.com"
+                  value={email}
+                  onChange={(ev) => setEmail(ev.target.value)}
+                  className="w-full pl-10 pr-4 py-2.5 md:py-3 border border-[#8ECAE6] rounded-lg focus:outline-none focus:border-[#219EBC] focus:ring-2 focus:ring-[#8ECAE6]/50 transition-all text-sm md:text-base"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-[#023047] text-sm font-medium mb-2">
+                Password
+              </label>
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="••••••••"
+                  value={password}
+                  onChange={(ev) => setPassword(ev.target.value)}
+                  className="w-full pl-10 pr-12 py-2.5 md:py-3 border border-[#8ECAE6] rounded-lg focus:outline-none focus:border-[#219EBC] focus:ring-2 focus:ring-[#8ECAE6]/50 transition-all text-sm md:text-base"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#219EBC] hover:text-[#023047] transition-colors text-sm"
+                >
+                  {showPassword ? "👁️" : "👁️🗨️"}
+                </button>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full py-3 bg-[#219EBC] text-white font-medium rounded-lg hover:bg-[#023047] transition-colors duration-300 flex items-center justify-center gap-2"
+            >
+              Sign In
+            </button>
+
+            <div className="text-center text-sm text-[#023047] mt-4">
+              Don't have an account?{" "}
+              <Link
+                to="/register"
+                className="font-medium text-[#219EBC] hover:text-[#023047] underline underline-offset-4 decoration-1 transition-colors"
+              >
+                Create account
+              </Link>
+            </div>
+          </form>
+        </div>
       </div>
-      <ToastContainer /> {/* Container for toast notifications */}
+
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        toastClassName="!bg-[#8ECAE6]"
+        progressClassName="!bg-[#023047]"
+      />
     </div>
   );
 };

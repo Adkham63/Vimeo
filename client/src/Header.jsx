@@ -28,7 +28,9 @@ const Header = () => {
               d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z"
             />
           </svg>
-          <span className="text-2xl font-bold tracking-tight">Vimeo Pro</span>
+          <span className="text-2xl font-bold tracking-tight">
+            Videographers' Hub
+          </span>
         </Link>
 
         {/* Navigation Links */}
@@ -55,7 +57,7 @@ const Header = () => {
           </Link>
 
           <Link
-            to="/gear"
+            to="/updates"
             className="flex items-center gap-1 hover:bg-white/10 px-4 py-2 rounded-lg transition-all duration-200"
           >
             <svg
@@ -69,11 +71,54 @@ const Header = () => {
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"
+                d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"
               />
             </svg>
-            <span className="font-medium">Gear Guide</span>
+            <span className="font-medium">Updates</span>
           </Link>
+          <Link
+            to="/forum"
+            className="flex items-center gap-2 hover:bg-white/10 px-4 py-2 rounded-lg"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
+              />
+            </svg>
+            Forum
+          </Link>
+
+          {user?.isAdmin && (
+            <Link
+              to="/admin/create-update"
+              className="flex items-center gap-1 hover:bg-white/10 px-4 py-2 rounded-lg transition-all duration-200"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 4.5v15m7.5-7.5h-15"
+                />
+              </svg>
+              <span className="font-medium">New Post</span>
+            </Link>
+          )}
         </nav>
 
         {/* User Section */}
