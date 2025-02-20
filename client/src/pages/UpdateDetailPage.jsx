@@ -13,7 +13,7 @@ const UpdateDetailPage = () => {
         const { data } = await axios.get(`/api/updates/${id}`);
         setUpdate(data);
       } catch (error) {
-        console.error("Error fetching update:", error);
+        console.error("Ошибка при получении обновления:", error);
       } finally {
         setLoading(false);
       }
@@ -22,7 +22,7 @@ const UpdateDetailPage = () => {
   }, [id]);
 
   if (loading)
-    return <div className="text-center py-8">Loading article...</div>;
+    return <div className="text-center py-8">Загрузка статьи...</div>;
 
   return (
     <article className="max-w-3xl mx-auto px-4 py-8">

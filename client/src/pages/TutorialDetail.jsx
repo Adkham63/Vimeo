@@ -28,8 +28,8 @@ const tutorialDetails = {
 const TutorialDetail = () => {
   const { tutorialSlug } = useParams();
   const details = tutorialDetails[tutorialSlug] || {
-    title: "Tutorial Not Found",
-    content: "No details available for this tutorial.",
+    title: "Учебное пособие,",
+    content: "В этом руководстве нет подробной информации.",
     videoUrl: null,
   };
 
@@ -54,7 +54,7 @@ const TutorialDetail = () => {
                 d="M10 19l-7-7m0 0l7-7m-7 7h18"
               />
             </svg>
-            <span>Back to Tutorials</span>
+            <span>Вернемся к учебным пособиям</span>
           </Link>
         </div>
 
@@ -93,10 +93,10 @@ const TutorialDetail = () => {
                 </svg>
                 <div>
                   <h3 className="text-red-800 font-semibold">
-                    Tutorial not found
+                    Учебное пособие не найден
                   </h3>
                   <p className="text-red-700 mt-1">
-                    The requested tutorial does not exist.
+                    Запрошенное учебное пособие не существует.
                   </p>
                 </div>
               </div>
@@ -132,7 +132,7 @@ const TutorialDetail = () => {
                       />
                     </svg>
                     <span className="text-gray-700">
-                      Professional lighting setups
+                      Профессиональная установка освещения
                     </span>
                   </li>
                   {/* Add more list items */}
@@ -141,7 +141,7 @@ const TutorialDetail = () => {
 
               <div className="bg-indigo-50 p-6 rounded-xl">
                 <h3 className="text-2xl font-semibold mb-4 text-indigo-800">
-                  Recommended Equipment
+                  Рекомендуемое оборудование
                 </h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-white p-4 rounded-lg shadow-sm">
@@ -160,7 +160,7 @@ const TutorialDetail = () => {
                 to="/tutorials"
                 className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition-colors shadow-sm"
               >
-                Explore More Tutorials
+                Изучите больше руководств
               </Link>
             </div>
           </div>

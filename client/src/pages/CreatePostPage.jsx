@@ -32,7 +32,9 @@ const CreatePostPage = () => {
         data: error.response?.data,
         message: error.message,
       });
-      alert(`Error: ${error.response?.data?.error || "Failed to create post"}`);
+      alert(
+        `Error: ${error.response?.data?.error || "Не удалось создать запись"}`
+      );
     }
   };
 
@@ -44,7 +46,7 @@ const CreatePostPage = () => {
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Title Input */}
         <div>
-          <label className="block mb-2 font-medium">Title</label>
+          <label className="block mb-2 font-medium">Заглавие</label>
           <input
             type="text"
             value={title}
@@ -54,12 +56,12 @@ const CreatePostPage = () => {
             maxLength="120"
             required
           />
-          <p className="text-sm text-gray-500 mt-1">Minimum 5 characters</p>
+          <p className="text-sm text-gray-500 mt-1">Минимум 5 символов</p>
         </div>
 
         {/* Content Input */}
         <div>
-          <label className="block mb-2 font-medium">Content</label>
+          <label className="block mb-2 font-medium">Содержание</label>
           <textarea
             value={content}
             onChange={(e) => setContent(e.target.value)}
@@ -67,20 +69,18 @@ const CreatePostPage = () => {
             minLength="10"
             required
           />
-          <p className="text-sm text-gray-500 mt-1">Minimum 10 characters</p>
+          <p className="text-sm text-gray-500 mt-1">Минимум 10 символов</p>
         </div>
 
         {/* Tags Input */}
         <div>
-          <label className="block mb-2 font-medium">
-            Tags (comma separated)
-          </label>
+          <label className="block mb-2 font-medium">Теги (через запятую)</label>
           <input
             type="text"
             value={tags}
             onChange={(e) => setTags(e.target.value)}
             className="w-full p-2 border rounded-lg"
-            placeholder="e.g., equipment, techniques, workflow"
+            placeholder="например, оборудование, методы, рабочий процесс"
           />
         </div>
 
@@ -89,7 +89,7 @@ const CreatePostPage = () => {
           type="submit"
           className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
         >
-          Create Post
+          Создать пост
         </button>
       </form>
     </div>

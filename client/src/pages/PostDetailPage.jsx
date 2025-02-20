@@ -24,7 +24,7 @@ const PostDetailPage = () => {
         setComments(commentsData);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching post:", error);
+        console.error("Сообщение об ошибке при выборке:", error);
         setLoading(false);
       }
     };
@@ -51,7 +51,9 @@ const PostDetailPage = () => {
         data: error.response?.data,
         message: error.message,
       });
-      alert(error.response?.data?.error || "Failed to post comment");
+      alert(
+        error.response?.data?.error || "Не удалось опубликовать комментарий"
+      );
     }
   };
 
@@ -61,12 +63,12 @@ const PostDetailPage = () => {
       const { data } = await axios.post(`/api/forum/posts/${id}/upvote`);
       setPost({ ...post, upvotes: data.upvotes });
     } catch (error) {
-      console.error("Upvote failed:", error);
+      console.error("Не удалось повысить голос:", error);
     }
   };
 
-  if (loading) return <div className="text-center p-8">Loading post...</div>;
-  if (!post) return <div className="text-center p-8">Post not found</div>;
+  if (loading) return <div className="text-center p-8">Погрузочный пост...</div>;
+  if (!post) return <div className="text-center p-8">Пост не найден</div>;
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
@@ -110,7 +112,7 @@ const PostDetailPage = () => {
 
         <section className="border-t pt-6">
           <h2 className="text-xl font-bold mb-4">
-            Comments ({comments.length})
+            Комментарии ({comments.length})
           </h2>
 
           {user && (
@@ -118,7 +120,7 @@ const PostDetailPage = () => {
               <textarea
                 value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}
-                placeholder="Write your comment..."
+                placeholder="Напишите свой комментарий..."
                 className="w-full p-3 border rounded-lg mb-2"
                 rows="3"
               />
@@ -126,7 +128,7 @@ const PostDetailPage = () => {
                 type="submit"
                 className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
               >
-                Post Comment
+                Оставить комментарий
               </button>
             </form>
           )}
@@ -164,7 +166,7 @@ const Comment = ({ comment }) => {
       setShowReply(false);
       setReplyContent("");
     } catch (error) {
-      console.error("Reply submission failed:", error);
+      console.error("Не удалось отправить ответ:", error);
     }
   };
 
@@ -185,7 +187,7 @@ const Comment = ({ comment }) => {
               onClick={() => setShowReply(!showReply)}
               className="text-blue-600 text-sm mt-2 hover:text-blue-700"
             >
-              Reply
+              Ответить
             </button>
           )}
 
@@ -194,7 +196,7 @@ const Comment = ({ comment }) => {
               <textarea
                 value={replyContent}
                 onChange={(e) => setReplyContent(e.target.value)}
-                placeholder="Write your reply..."
+                placeholder="Напишите свой ответ..."
                 className="w-full p-2 border rounded-lg mb-2"
                 rows="2"
               />
@@ -203,14 +205,14 @@ const Comment = ({ comment }) => {
                   type="submit"
                   className="bg-blue-600 text-white px-3 py-1 rounded-lg hover:bg-blue-700"
                 >
-                  Post Reply
+                  Отправить ответ
                 </button>
                 <button
                   type="button"
                   onClick={() => setShowReply(false)}
                   className="bg-gray-200 px-3 py-1 rounded-lg"
                 >
-                  Cancel
+                  Отменить
                 </button>
               </div>
             </form>

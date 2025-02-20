@@ -17,11 +17,11 @@ export default function RegisterPage() {
     setError(null);
 
     if (!name || !email || !password) {
-      setError("All fields are required ✏️");
+      setError("Все поля обязательны для заполнения ✏️");
       return;
     }
     if (!/\S+@\S+\.\S+/.test(email)) {
-      setError("Please enter a valid email 📧");
+      setError("Пожалуйста, введите действительный адрес электронной почты 📧");
       return;
     }
 
@@ -29,12 +29,14 @@ export default function RegisterPage() {
 
     try {
       await axios.post("/api/register", { name, email, password });
-      toast.success("🎉 Registration successful! You can now login");
+      toast.success(
+        "🎉 Регистрация прошла успешно! Теперь вы можете войти в систему"
+      );
       setName("");
       setEmail("");
       setPassword("");
     } catch (e) {
-      toast.error("⚠️ Registration failed. Please try again");
+      toast.error("⚠️ Регистрация не удалась. Пожалуйста, попробуйте снова");
     } finally {
       setLoading(false);
     }
@@ -50,17 +52,17 @@ export default function RegisterPage() {
         <div className="bg-white/95 backdrop-blur-sm p-6 md:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
           <div className="text-center mb-6">
             <h1 className="text-3xl md:text-4xl font-bold text-[#023047] mb-2">
-              Join Our Community
+              Присоединяйтесь к нашему сообществу
             </h1>
             <p className="text-[#023047]/80 text-sm md:text-base">
-              Create your account in seconds
+              Создайте свою учетную запись за считанные секунды
             </p>
           </div>
 
           <form onSubmit={registerUser} className="space-y-4">
             <div>
               <label className="block text-[#023047] text-sm font-medium mb-2">
-                Full Name
+                Полное имя
               </label>
               <div className="relative">
                 <input
@@ -76,7 +78,7 @@ export default function RegisterPage() {
 
             <div>
               <label className="block text-[#023047] text-sm font-medium mb-2">
-                Email Address
+                Адрес электронной почты
               </label>
               <div className="relative">
                 <input
@@ -92,7 +94,7 @@ export default function RegisterPage() {
 
             <div>
               <label className="block text-[#023047] text-sm font-medium mb-2">
-                Password
+                Пароль
               </label>
               <div className="relative">
                 <input
@@ -127,20 +129,20 @@ export default function RegisterPage() {
               {loading ? (
                 <>
                   <span className="animate-spin">🌀</span>
-                  Registering...
+                  Регистрируюсь...
                 </>
               ) : (
-                <>Register Now</>
+                <>Зарегистрируйтесь прямо сейчас</>
               )}
             </button>
 
             <div className="text-center text-sm text-[#023047] mt-4">
-              Already have an account?{" "}
+              У вас уже есть учетная запись?{" "}
               <Link
                 to="/login"
                 className="font-medium text-[#219EBC] hover:text-[#023047] underline underline-offset-4 decoration-1 transition-colors"
               >
-                Login here
+                Войдите в систему здесь
               </Link>
             </div>
           </form>

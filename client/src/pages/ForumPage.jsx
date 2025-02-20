@@ -14,8 +14,8 @@ const ForumPage = () => {
         const { data } = await axios.get("/api/forum/posts");
         setPosts(Array.isArray(data) ? data : []);
       } catch (error) {
-        console.error("Error fetching posts:", error);
-        alert("Failed to load posts");
+        console.error("Ошибка при выборке сообщений:", error);
+        alert("Не удалось загрузить сообщения");
       }
       setLoading(false);
     };
@@ -37,27 +37,27 @@ const ForumPage = () => {
         )
       );
     } catch (error) {
-      alert(error.response?.data?.error || "Upvote failed");
+      alert(error.response?.data?.error || "Не удалось повысить голос");
     }
   };
 
   const handleDeletePost = async (postId) => {
-    if (!window.confirm("Are you sure you want to delete this post?")) return;
+    if (!window.confirm("Вы уверены, что хотите удалить этот пост?")) return;
 
     try {
       await axios.delete(`/api/forum/posts/${postId}`, {
         withCredentials: true,
       });
       setPosts(posts.filter((post) => post._id !== postId));
-      alert("Post deleted successfully");
+      alert("Сообщение успешно удалено");
     } catch (error) {
-      console.error("Delete error:", error);
-      alert(error.response?.data?.error || "Failed to delete post");
+      console.error("Ошибка удаления:", error);
+      alert(error.response?.data?.error || "Не удалось удалить запись");
     }
   };
 
   if (!ready) {
-    return <div className="text-center py-8">Loading...</div>;
+    return <div className="text-center py-8">Загрузка...</div>;
   }
 
   if (ready && !user) {
@@ -67,21 +67,21 @@ const ForumPage = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="flex justify-between items-center mb-8 gap-4">
-        <h1 className="text-3xl font-bold">Community Forum</h1>
+        <h1 className="text-3xl font-bold">Форум сообщества</h1>
         {user?.isAdmin && (
           <Link
             to="/forum/new"
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
           >
-            New Post
+            Новая должность
           </Link>
         )}
       </div>
 
       {loading ? (
-        <div className="text-center">Loading posts...</div>
+        <div className="text-center">Погрузочные посты...</div>
       ) : posts.length === 0 ? (
-        <div className="text-center text-gray-500">No posts yet</div>
+        <div className="text-center text-gray-500">Постов пока нет</div>
       ) : (
         <div className="space-y-6">
           {posts.map((post) => (

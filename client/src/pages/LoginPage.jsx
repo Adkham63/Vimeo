@@ -17,10 +17,10 @@ const LoginPage = () => {
     try {
       const { data } = await axios.post("/api/login", { email, password });
       setUser(data);
-      toast.success("🎉 Login successful! Redirecting...");
+      toast.success("🎉 Авторизация прошла успешно! Перенаправление...");
       setTimeout(() => setRedirect(true), 1500);
     } catch (e) {
-      toast.error("⚠️ Login failed. Please check your credentials");
+      toast.error("⚠️ Ошибка входа. Пожалуйста, проверьте свои учетные данные");
     }
   }
 
@@ -38,17 +38,17 @@ const LoginPage = () => {
         <div className="bg-white/95 backdrop-blur-sm p-6 md:p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
           <div className="text-center mb-6">
             <h1 className="text-3xl md:text-4xl font-bold text-[#023047] mb-2">
-              Welcome Back
+              Добро пожаловать обратно!
             </h1>
             <p className="text-[#023047]/80 text-sm md:text-base">
-              Sign in to continue your journey
+              Войдите в систему, чтобы продолжить свое путешествие
             </p>
           </div>
 
           <form className="space-y-4" onSubmit={handleLoginSubmit}>
             <div>
               <label className="block text-[#023047] text-sm font-medium mb-2">
-                Email
+                Электронная почта
               </label>
               <div className="relative">
                 <input
@@ -63,7 +63,7 @@ const LoginPage = () => {
 
             <div>
               <label className="block text-[#023047] text-sm font-medium mb-2">
-                Password
+                Пароль
               </label>
               <div className="relative">
                 <input
@@ -87,16 +87,16 @@ const LoginPage = () => {
               type="submit"
               className="w-full py-3 bg-[#219EBC] text-white font-medium rounded-lg hover:bg-[#023047] transition-colors duration-300 flex items-center justify-center gap-2"
             >
-              Sign In
+              Войти в систему
             </button>
 
             <div className="text-center text-sm text-[#023047] mt-4">
-              Don't have an account?{" "}
+              У вас нет учетной записи?{" "}
               <Link
                 to="/register"
                 className="font-medium text-[#219EBC] hover:text-[#023047] underline underline-offset-4 decoration-1 transition-colors"
               >
-                Create account
+                Создать аккаунт
               </Link>
             </div>
           </form>
