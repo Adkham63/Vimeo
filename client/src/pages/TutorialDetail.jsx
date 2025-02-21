@@ -2,40 +2,52 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 
 const tutorialDetails = {
-  "lighting-techniques": {
-    title: "Lighting Techniques for Videographers",
+  "basics-of-shooting": {
+    title: "Основы съемки и монтажа видео | Бесплатный курс",
     content:
-      "In this tutorial, you will learn the essential lighting setups for various videography scenarios. Tips include balancing natural light with artificial sources, using softboxes, and more.",
-    videoUrl:
-      "https://www.youtube-nocookie.com/embed/nqMQZG68Wkc?si=AenaoHEmOVKy35K8",
+      "Всем привет и это первый урок с БЕСПЛАТНОГО курса по съемке и монтажу видео от Мастерской Исаева.",
+    videoUrl: "https://www.youtube-nocookie.com/embed/qlr7MYI7q2o",
   },
-  "premiere-pro-workflow": {
-    title: "Editing Workflow in Adobe Premiere Pro",
+  "how-to-become-a-videographer": {
+    title: "3 урок курса Как стать видеографом: с 0 до первых денег",
     content:
-      "This tutorial covers an efficient editing workflow in Adobe Premiere Pro. Learn shortcuts, timeline organization, and best practices to speed up your editing process.",
-    videoUrl:
-      "https://www.youtube-nocookie.com/embed/Rh3tobg7hEo?si=lFKCOvKNWAKmKhBY",
+      "Бесплатный мини-курс Даши Козыревой Как стать видеографом: с 0 до первых денег...",
+    videoUrl: "https://www.youtube-nocookie.com/embed/ty9IBUSGFNs",
   },
-  "best-cameras-2025": {
-    title: "Equipment Reviews: Best Cameras 2025",
+  "how-to-learn-video-editing": {
+    title: "Как учиться монтажу видео / План обучения для начинающих",
     content:
-      "Explore our top recommendations for videography cameras in 2025. We review features, performance, and value for professionals and enthusiasts alike.",
+      "Если вы начинаете изучать видеомонтаж и не знаете с чего начать...",
+    videoUrl: "https://www.youtube-nocookie.com/embed/6p4xCyRJN2U",
+  },
+  "color-correction": {
+    title:
+      "Топ-5 КНИГ по МОНТАЖУ видео и цветокоррекции | БЫСТРЫЙ СПОСОБ научиться МОНТИРОВАТЬ видео",
+    content:
+      "Тут ты найдешь всю информацию, что бы научиться создавать киношные видео...",
     videoUrl:
-      "https://www.youtube-nocookie.com/embed/Rh3tobg7hEo?si=lFKCOvKNWAKmKhBY",
+      "https://www.youtube-nocookie.com/embed/_py5znK0dEs?si=d7UO0Pknh5ww5Ldg",
+  },
+  "deceitful-videographers": {
+    title: "Видеографы — обманщики! Красит ли Найшуллер материал?",
+    content:
+      "Видеографы — обманщики! Красит ли Найшуллер материал с блекмеджика?",
+    videoUrl: "https://www.youtube-nocookie.com/embed/DBpdazNJ3M0",
   },
 };
 
 const TutorialDetail = () => {
   const { tutorialSlug } = useParams();
   const details = tutorialDetails[tutorialSlug] || {
-    title: "Учебное пособие,",
-    content: "В этом руководстве нет подробной информации.",
+    title: "Tutorial Not Found",
+    content: "No details available for this tutorial.",
     videoUrl: null,
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-blue-100 py-12">
       <div className="container mx-auto px-4 max-w-4xl">
+        {/* Back link */}
         <div className="mb-8">
           <Link
             to="/tutorials"
@@ -58,11 +70,13 @@ const TutorialDetail = () => {
           </Link>
         </div>
 
+        {/* Main content */}
         <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-10 transition-all hover:shadow-3xl">
           <h1 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-indigo-600 to-blue-500 bg-clip-text text-transparent">
             {details.title}
           </h1>
 
+          {/* If there's a video, embed it */}
           {details.videoUrl ? (
             <div className="mb-10 rounded-xl overflow-hidden shadow-lg">
               <div className="relative" style={{ paddingBottom: "56.25%" }}>
@@ -76,6 +90,7 @@ const TutorialDetail = () => {
               </div>
             </div>
           ) : details.title === "Tutorial Not Found" ? (
+            // If the tutorial is not found
             <div className="mb-8 p-6 bg-red-50 rounded-xl border border-red-200">
               <div className="flex items-center space-x-3">
                 <svg
@@ -93,7 +108,7 @@ const TutorialDetail = () => {
                 </svg>
                 <div>
                   <h3 className="text-red-800 font-semibold">
-                    Учебное пособие не найден
+                    Учебное пособие не найдено
                   </h3>
                   <p className="text-red-700 mt-1">
                     Запрошенное учебное пособие не существует.
@@ -104,57 +119,14 @@ const TutorialDetail = () => {
           ) : null}
 
           <div className="prose prose-lg max-w-none">
+            {/* Additional text content */}
             <div className="bg-blue-50 rounded-xl p-6 mb-8">
               <p className="text-blue-800 text-lg leading-relaxed">
                 {details.content}
               </p>
             </div>
 
-            {/* Additional Content Sections */}
-            <div className="space-y-8">
-              <div className="bg-gray-50 p-6 rounded-xl">
-                <h3 className="text-2xl font-semibold mb-4 text-gray-800">
-                  Key Takeaways
-                </h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start space-x-2">
-                    <svg
-                      className="w-5 h-5 text-green-500 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span className="text-gray-700">
-                      Профессиональная установка освещения
-                    </span>
-                  </li>
-                  {/* Add more list items */}
-                </ul>
-              </div>
-
-              <div className="bg-indigo-50 p-6 rounded-xl">
-                <h3 className="text-2xl font-semibold mb-4 text-indigo-800">
-                  Рекомендуемое оборудование
-                </h3>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white p-4 rounded-lg shadow-sm">
-                    <h4 className="font-medium text-gray-800">Softbox Kit</h4>
-                    <p className="text-sm text-gray-600">
-                      Neewer 2.4G LED Softboxes
-                    </p>
-                  </div>
-                  {/* Add more equipment items */}
-                </div>
-              </div>
-            </div>
-
+            {/* Link back to tutorials */}
             <div className="mt-12 flex justify-center">
               <Link
                 to="/tutorials"

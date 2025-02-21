@@ -42,7 +42,7 @@ const CreatePostPage = () => {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
-      <h2 className="text-2xl font-bold mb-6">Create New Post</h2>
+      <h2 className="text-2xl font-bold mb-6">Создать новую запись</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Title Input */}
         <div>

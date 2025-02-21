@@ -6,28 +6,53 @@ const TutorialsPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Mock data with images (thumbnails) for each tutorial
     const mockTutorials = [
       {
         id: 1,
-        title: "Lighting Techniques for Videographers",
-        description: "Learn how to set up professional lighting for any shoot.",
-        linkSlug: "lighting-techniques",
+        title: "Основы съемки и монтажа видео | Бесплатный курс",
+        description:
+          "Всем привет и это первый урок с БЕСПЛАТНОГО курса по съемке и монтажу видео от Мастерской Исаева.",
+        linkSlug: "basics-of-shooting",
+        thumbnail: "https://img.youtube.com/vi/qlr7MYI7q2o/hqdefault.jpg", // Example thumbnail
       },
       {
         id: 2,
-        title: "Editing Workflow in Adobe Premiere Pro",
+        title: "3 урок курса Как стать видеографом: с 0 до первых денег",
         description:
-          "Improve your editing efficiency with these tips and tricks.",
-        linkSlug: "premiere-pro-workflow",
+          "Бесплатный мини-курс Даши Козыревой Как стать видеографом: с 0 до первых денег — по сути это основы видеосъёмки.",
+        linkSlug: "how-to-become-a-videographer",
+        thumbnail: "https://img.youtube.com/vi/ty9IBUSGFNs/hqdefault.jpg", // Example thumbnail
       },
       {
         id: 3,
-        title: "Equipment Reviews: Best Cameras 2025",
-        description: "Discover our top picks for videography cameras in 2025.",
-        linkSlug: "best-cameras-2025",
+        title: "Как учиться монтажу видео / План обучения для начинающих",
+        description:
+          "Если вы начинаете изучать видеомонтаж и не знаете, с чего начать, мы расскажем о всех темах для новичков.",
+        linkSlug: "how-to-learn-video-editing",
+        thumbnail: "https://img.youtube.com/vi/6p4xCyRJN2U/hqdefault.jpg", // Example thumbnail
+      },
+      {
+        id: 4,
+        title:
+          "Топ-5 КНИГ по МОНТАЖУ видео и цветокоррекции | БЫСТРЫЙ СПОСОБ научиться МОНТИРОВАТЬ видео",
+        description:
+          "Тут ты найдешь всю информацию, чтобы научиться создавать киношные видео и построить профессию.",
+        linkSlug: "color-correction",
+        thumbnail: "https://img.youtube.com/vi/_py5znK0dEs/hqdefault.jpg", // Example thumbnail
+      },
+      {
+        id: 5,
+        title:
+          "Видеографы — обманщики! Красит ли Найшуллер материал с блекмеджика?",
+        description:
+          "Видеографы — обманщики! Красит ли Найшуллер материал с блекмеджика?",
+        linkSlug: "deceitful-videographers",
+        thumbnail: "https://img.youtube.com/vi/DBpdazNJ3M0/hqdefault.jpg", // Example thumbnail
       },
     ];
 
+    // Simulate network delay
     setTimeout(() => {
       setTutorials(mockTutorials);
       setLoading(false);
@@ -56,6 +81,13 @@ const TutorialsPage = () => {
               className="group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
             >
               <div className="p-6 h-full flex flex-col">
+                {/* Thumbnail */}
+                <img
+                  src={tutorial.thumbnail}
+                  alt={tutorial.title}
+                  className="mb-4 rounded-lg w-full h-48 object-cover"
+                />
+
                 <div className="flex-1">
                   <h2 className="text-2xl font-bold text-gray-800 mb-3">
                     {tutorial.title}
