@@ -22,7 +22,7 @@ const UpdateDetailPage = () => {
   }, [id]);
 
   if (loading)
-    return <div className="text-center py-8">Загрузка статьи...</div>;
+    return <div className="text-center py-8">Uploading an article...</div>;
 
   return (
     <article className="max-w-3xl mx-auto px-4 py-8">

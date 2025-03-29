@@ -13,7 +13,7 @@ const CreateUpdateForm = () => {
     e.preventDefault();
     try {
       await axios.post("/api/updates", formData);
-      alert("Обновление успешно опубликовано!");
+      alert("The update has been successfully published!");
       setFormData({
         title: "",
         content: "",
@@ -27,10 +27,10 @@ const CreateUpdateForm = () => {
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-6">Создать новое обновление</h2>
+      <h2 className="text-2xl font-bold mb-6">Create a new update</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-gray-700 mb-2">Заглавие</label>
+          <label className="block text-gray-700 mb-2">The title</label>
           <input
             type="text"
             value={formData.title}
@@ -43,7 +43,7 @@ const CreateUpdateForm = () => {
         </div>
 
         <div>
-          <label className="block text-gray-700 mb-2">Содержание</label>
+          <label className="block text-gray-700 mb-2">Content</label>
           <textarea
             value={formData.content}
             onChange={(e) =>
@@ -55,7 +55,7 @@ const CreateUpdateForm = () => {
         </div>
 
         <div>
-          <label className="block text-gray-700 mb-2">Категория</label>
+          <label className="block text-gray-700 mb-2">Category</label>
           <select
             value={formData.category}
             onChange={(e) =>
@@ -63,15 +63,15 @@ const CreateUpdateForm = () => {
             }
             className="w-full p-2 border rounded"
           >
-            <option value="news">Новости</option>
-            <option value="trends">Тенденции</option>
-            <option value="tutorials">Учебные пособия</option>
+            <option value="news">News</option>
+            <option value="trends">Trends</option>
+            <option value="tutorials">Training manuals</option>
           </select>
         </div>
 
         <div>
           <label className="block text-gray-700 mb-2">
-            URL-адрес рекомендуемого изображения
+            The URL of the recommended image
           </label>
           <input
             type="url"
@@ -87,7 +87,7 @@ const CreateUpdateForm = () => {
           type="submit"
           className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors"
         >
-          Опубликовать обновление
+          Publish an update
         </button>
       </form>
     </div>

@@ -42,14 +42,14 @@ const ForumPage = () => {
   };
 
   const handleDeletePost = async (postId) => {
-    if (!window.confirm("Вы уверены, что хотите удалить этот пост?")) return;
+    if (!window.confirm("Are you sure you want to delete this post?")) return;
 
     try {
       await axios.delete(`/api/forum/posts/${postId}`, {
         withCredentials: true,
       });
       setPosts(posts.filter((post) => post._id !== postId));
-      alert("Сообщение успешно удалено");
+      alert("The message was successfully deleted");
     } catch (error) {
       console.error("Ошибка удаления:", error);
       alert(error.response?.data?.error || "Не удалось удалить запись");
@@ -57,7 +57,7 @@ const ForumPage = () => {
   };
 
   if (!ready) {
-    return <div className="text-center py-8">Загрузка...</div>;
+    return <div className="text-center py-8">Loading...</div>;
   }
 
   if (ready && !user) {
@@ -67,21 +67,21 @@ const ForumPage = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="flex justify-between items-center mb-8 gap-4">
-        <h1 className="text-3xl font-bold">Форум сообщества</h1>
+        <h1 className="text-3xl font-bold">Community Forum</h1>
         {user?.isAdmin && (
           <Link
             to="/forum/new"
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
           >
-            Новый пост
+            New post
           </Link>
         )}
       </div>
 
       {loading ? (
-        <div className="text-center">Погрузочные посты...</div>
+        <div className="text-center">Loading posts...</div>
       ) : posts.length === 0 ? (
-        <div className="text-center text-gray-500">Постов пока нет</div>
+        <div className="text-center text-gray-500">There are no posts yet</div>
       ) : (
         <div className="space-y-6">
           {posts.map((post) => (

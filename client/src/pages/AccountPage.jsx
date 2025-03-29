@@ -56,7 +56,7 @@ export const AccountPage = () => {
         {/* Navigation Tabs */}
         <nav className="bg-white rounded-xl shadow-sm p-2 mb-8 flex justify-center gap-2">
           <Link className={linkClasses("profile")} to="/account">
-            Мой профиль
+            My profile
           </Link>
         </nav>
 
@@ -93,7 +93,7 @@ export const AccountPage = () => {
                 onClick={logout}
                 className="w-full max-w-xs mx-auto py-3 px-6 bg-gradient-to-r from-indigo-600 to-pink-500 text-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105"
               >
-                Выход из системы
+                Log out of the system
               </button>
             </div>
           </div>

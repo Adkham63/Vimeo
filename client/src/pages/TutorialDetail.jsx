@@ -66,7 +66,7 @@ const TutorialDetail = () => {
                 d="M10 19l-7-7m0 0l7-7m-7 7h18"
               />
             </svg>
-            <span>Вернемся к учебным пособиям</span>
+            <span>Let's go back to the tutorials</span>
           </Link>
         </div>
 
@@ -108,10 +108,10 @@ const TutorialDetail = () => {
                 </svg>
                 <div>
                   <h3 className="text-red-800 font-semibold">
-                    Учебное пособие не найдено
+                    The tutorial manual was not found
                   </h3>
                   <p className="text-red-700 mt-1">
-                    Запрошенное учебное пособие не существует.
+                    The requested tutorial does not exist.
                   </p>
                 </div>
               </div>
@@ -132,7 +132,7 @@ const TutorialDetail = () => {
                 to="/tutorials"
                 className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition-colors shadow-sm"
               >
-                Изучите больше руководств
+                Study more manuals
               </Link>
             </div>
           </div>

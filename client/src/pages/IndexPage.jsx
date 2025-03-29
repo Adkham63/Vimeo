@@ -17,10 +17,10 @@ const IndexPage = () => {
       <section className="text-center py-20 px-4 bg-gradient-to-b from-blue-600 to-blue-500 text-white">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Добро пожаловать на наш форум сообщества
+            Welcome to our community forum
           </h1>
           <p className="text-xl md:text-2xl mb-8 opacity-90">
-            Общайтесь, делитесь и учитесь с тысячами увлеченных пользователей
+            Connect, share, and learn with thousands of passionate users.
           </p>
           <div className="flex justify-center gap-4">
             {!user && (
@@ -29,13 +29,13 @@ const IndexPage = () => {
                   to="/register"
                   className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all"
                 >
-                  Начать
+                  To begin
                 </Link>
                 <Link
                   to="/login"
                   className="border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all"
                 >
-                  Войти в систему
+                  Log in to the system
                 </Link>
               </>
             )}
@@ -44,7 +44,7 @@ const IndexPage = () => {
                 to="/forum"
                 className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all flex items-center gap-2"
               >
-                Перейти на форум <ArrowRightIcon className="w-5 h-5" />
+                Go to the forum <ArrowRightIcon className="w-5 h-5" />
               </Link>
             )}
           </div>
@@ -55,27 +55,27 @@ const IndexPage = () => {
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Зачем присоединяться к Нашему Сообществу?
+            Why join Our Community?
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 icon: ChatBubbleLeftRightIcon,
-                title: "Участвуйте в дискуссиях",
+                title: "Participate in discussions",
                 description:
-                  "Участвуйте в содержательных беседах с членами сообщества",
+                  "Engage in meaningful conversations with community members.",
               },
               {
                 icon: UserGroupIcon,
-                title: "Общайтесь с экспертами",
+                title: "Communicate with experts",
                 description:
-                  "Получите консультацию от профессионалов отрасли и энтузиастов",
+                  "Get advice from industry professionals and enthusiasts",
               },
               {
                 icon: SparklesIcon,
-                title: "Будьте в курсе событий",
+                title: "Keep up to date with events",
                 description:
-                  "Последние тенденции, новости и новинки в интересующей вас области",
+                  "The latest trends, news and novelties in the field you are interested in",
               },
             ].map((feature, index) => (
               <div
@@ -94,17 +94,17 @@ const IndexPage = () => {
       {/* CTA Section */}
       <section className="bg-blue-50 py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">Готовы присоединиться?</h2>
+          <h2 className="text-3xl font-bold mb-6">Are you ready to join?</h2>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            Станьте частью нашего растущего сообщества сегодня и начать
-            заниматься единомышленников по различным темам и интересам.
+            Become a part of our growing community today and get started Engage
+            like-minded people on various topics and interests.
           </p>
           {!user && (
             <Link
               to="/register"
               className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block"
             >
-              Создайте бесплатную учетную запись
+              Create a Free Account
             </Link>
           )}
         </div>
@@ -114,7 +114,8 @@ const IndexPage = () => {
       <footer className="bg-gray-800 text-white py-12 px-4 mt-20">
         <div className="border-t border-gray-800 pt-8 text-center">
           <p className="text-sm">
-            © {new Date().getFullYear()} Форум сообщества. Все права защищены.
+            © {new Date().getFullYear()} The community forum. All rights
+            reserved.
           </p>
         </div>
       </footer>

@@ -67,8 +67,9 @@ const PostDetailPage = () => {
     }
   };
 
-  if (loading) return <div className="text-center p-8">Погрузочный пост...</div>;
-  if (!post) return <div className="text-center p-8">Пост не найден</div>;
+  if (loading) return <div className="text-center p-8">Loading post...</div>;
+  if (!post)
+    return <div className="text-center p-8">The post was not found</div>;
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
@@ -112,7 +113,7 @@ const PostDetailPage = () => {
 
         <section className="border-t pt-6">
           <h2 className="text-xl font-bold mb-4">
-            Комментарии ({comments.length})
+            Comments ({comments.length})
           </h2>
 
           {user && (
@@ -120,7 +121,7 @@ const PostDetailPage = () => {
               <textarea
                 value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}
-                placeholder="Напишите свой комментарий..."
+                placeholder="Write your comment..."
                 className="w-full p-3 border rounded-lg mb-2"
                 rows="3"
               />
@@ -128,7 +129,7 @@ const PostDetailPage = () => {
                 type="submit"
                 className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
               >
-                Оставить комментарий
+                Leave a comment
               </button>
             </form>
           )}
@@ -187,7 +188,7 @@ const Comment = ({ comment }) => {
               onClick={() => setShowReply(!showReply)}
               className="text-blue-600 text-sm mt-2 hover:text-blue-700"
             >
-              Ответить
+              To answer
             </button>
           )}
 
@@ -196,7 +197,7 @@ const Comment = ({ comment }) => {
               <textarea
                 value={replyContent}
                 onChange={(e) => setReplyContent(e.target.value)}
-                placeholder="Напишите свой ответ..."
+                placeholder="Write your answer..."
                 className="w-full p-2 border rounded-lg mb-2"
                 rows="2"
               />
@@ -205,14 +206,14 @@ const Comment = ({ comment }) => {
                   type="submit"
                   className="bg-blue-600 text-white px-3 py-1 rounded-lg hover:bg-blue-700"
                 >
-                  Отправить ответ
+                  Send a reply
                 </button>
                 <button
                   type="button"
                   onClick={() => setShowReply(false)}
                   className="bg-gray-200 px-3 py-1 rounded-lg"
                 >
-                  Отменить
+                  Cancel
                 </button>
               </div>
             </form>

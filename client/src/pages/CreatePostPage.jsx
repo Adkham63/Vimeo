@@ -42,11 +42,11 @@ const CreatePostPage = () => {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
-      <h2 className="text-2xl font-bold mb-6">Создать новую запись</h2>
+      <h2 className="text-2xl font-bold mb-6">Create a new post</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Title Input */}
         <div>
-          <label className="block mb-2 font-medium">Заглавие</label>
+          <label className="block mb-2 font-medium">The title</label>
           <input
             type="text"
             value={title}
@@ -56,12 +56,12 @@ const CreatePostPage = () => {
             maxLength="120"
             required
           />
-          <p className="text-sm text-gray-500 mt-1">Минимум 5 символов</p>
+          <p className="text-sm text-gray-500 mt-1">Minimum of 5 characters</p>
         </div>
 
         {/* Content Input */}
         <div>
-          <label className="block mb-2 font-medium">Содержание</label>
+          <label className="block mb-2 font-medium">Content</label>
           <textarea
             value={content}
             onChange={(e) => setContent(e.target.value)}
@@ -69,18 +69,20 @@ const CreatePostPage = () => {
             minLength="10"
             required
           />
-          <p className="text-sm text-gray-500 mt-1">Минимум 10 символов</p>
+          <p className="text-sm text-gray-500 mt-1">Minimum of 10 characters</p>
         </div>
 
         {/* Tags Input */}
         <div>
-          <label className="block mb-2 font-medium">Теги (через запятую)</label>
+          <label className="block mb-2 font-medium">
+            Tags (separated by commas)
+          </label>
           <input
             type="text"
             value={tags}
             onChange={(e) => setTags(e.target.value)}
             className="w-full p-2 border rounded-lg"
-            placeholder="например, оборудование, методы, рабочий процесс"
+            placeholder="for example, equipment, methods, workflow"
           />
         </div>
 
@@ -89,7 +91,7 @@ const CreatePostPage = () => {
           type="submit"
           className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
         >
-          Создать пост
+          Create a post
         </button>
       </form>
     </div>
